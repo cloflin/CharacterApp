@@ -1,4 +1,5 @@
-var express = require('express'),
+var config = require('./config.json'),
+    express = require('express'),
     http = require('http'),
     path = require('path'),
     routes = require('./app/routes'),
@@ -12,7 +13,7 @@ var express = require('express'),
     methodOverride = require('method-override'),
     errorHandler = require('errorhandler');
 
-app.set('port', process.env.PORT || 3300);
+app.set('port', process.env.PORT || config.nodePort);
 app.set('views', __dirname + '/views');
 app.engine('handlebars', exphbs({
     defaultLayout: 'main',
@@ -23,7 +24,7 @@ app.set('view engine', 'handlebars');
 app.use(morgan('dev'));
 app.use(bodyParser());
 app.use(methodOverride());
-app.use(cookieParser('some-secret-value-here'));
+app.use(cookieParser(config.cookieSecret));
 
 routes.initialize(app, new express.Router());
 
@@ -34,7 +35,7 @@ if ('development' === app.get('env')) {
 }
 
 //connect to the db server:
-mongoose.connect('mongodb://localhost/MyApp');
+mongoose.connect('mongodb://localhost/boilerplate');
 mongoose.connection.on('open', function() {
     console.log('Connected to Mongoose.');
 
