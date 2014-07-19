@@ -4,49 +4,42 @@ var mongoose = require('mongoose'),
 
 module.exports = {
     check: function() {
-        models.Contact.find({}, function(err, contacts) {
-            if (contacts.length === 0) {
-                console.log('no contacts found, seeding...');
-                var newContact = new models.Contact({
-                    email: 'jkat98@gmail.com',
-                    name: {
-                        first: 'Jason',
-                        last: 'Krol'
+        models.Character.find({}, function(err, characters) {
+            if (characters.length === 0) {
+                console.log('no characters found, seeding...');
+                var newCharacter = new models.Character({
+                    characterName: "Diesum Moire",
+                    playerName: {
+                        first:  "Charles",
+                        last:   "Loflin"
                     },
-                    phone: '215-123-1234',
-                    gravatar: md5('jkat98@gmail.com')
+                    class:      "Rogue",
+                    level:   "1",
+                    ecl: "1",
+                    race: "Tiefling",
+                    template: "",
+                    size: "Medium",
+                    gender: "Male",
+                    alignment: "NE",
+                    patronDeity: "Tymorra",
+                    weight: "170 lbs.",
+                    description: "5'8\", yellow-blonde hair, pale skin, amber eyes. 18 years old.",
+                    abilityScores: {
+                        strength: 13,
+                        dexterity: 17,
+                        constitution: 14,
+                        intelligence: 14,
+                        wisdom: 10,
+                        charisma: 6
+                    },
+                    hitPoints: 8
                 });
-                newContact.save(function(err, contact) {
-                    console.log('successfully inserted contact: ' + contact._id);
+                newCharacter.save(function(err, character) {
+                    console.log('successfully inserted character: ' + character._id);
                 });
 
-                newContact = new models.Contact({
-                    email: 'testerson@example.com',
-                    name: {
-                        first: 'Steve',
-                        last: 'Testerson'
-                    },
-                    phone: '215-123-1234',
-                    gravatar: md5('testerson@example.com')
-                });
-                newContact.save(function(err, contact) {
-                    console.log('successfully inserted contact: ' + contact._id);
-                });
-
-                newContact = new models.Contact({
-                    email: 'nancy@testerson.com',
-                    name: {
-                        first: 'Nancy',
-                        last: 'Testerson'
-                    },
-                    phone: '215-123-1234',
-                    gravatar: md5('nancy@testerson.com')
-                });
-                newContact.save(function(err, contact) {
-                    console.log('successfully inserted contact: ' + contact._id);
-                });
             } else {
-                console.log('found ' + contacts.length + ' existing contacts!');
+                console.log('found ' + characters.length + ' existing characters!');
             }
         });
     }

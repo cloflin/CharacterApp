@@ -3,10 +3,12 @@ module.exports = function(grunt) {
     require('time-grunt')(grunt);
     require('load-grunt-tasks')(grunt);
 
+    var cfg = grunt.file.readJSON('config.json');
+
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
-        bower: {
+         bower: {
             install: {
                 options: {
                     targetDir: 'client/requires',
@@ -181,7 +183,7 @@ module.exports = function(grunt) {
                     nodeArgs: ['--debug'],
                     watchedFolders: ['controllers', 'app'],
                     env: {
-                        PORT: '3300'
+                        PORT: cfg.nodePort
                     }
                 }
             }

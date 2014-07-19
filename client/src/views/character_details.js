@@ -1,10 +1,10 @@
 var Marionette = require('backbone.marionette');
 
 module.exports = ContactDetailsView = Marionette.ItemView.extend({
-    template: require('../../templates/contact_details.hbs'),
+    template: require('../../templates/character_details.hbs'),
     events: {
         'click a.back': 'goBack',
-        'click a.delete': 'deleteContact'
+        'click a.delete': 'deleteCharacter'
     },
 
     goBack: function(e) {
@@ -14,7 +14,7 @@ module.exports = ContactDetailsView = Marionette.ItemView.extend({
     deleteContact: function(e) {
         e.preventDefault();
         console.log('Deleting contact');
-        window.App.data.contacts.remove(this.model);
+        window.App.data.characters.remove(this.model);
 
         // this will actually send a DELETE to the server:
         this.model.destroy();

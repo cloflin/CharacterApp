@@ -13,7 +13,9 @@ var config = require('./config.json'),
     methodOverride = require('method-override'),
     errorHandler = require('errorhandler');
 
-app.set('port', process.env.PORT || config.nodePort);
+console.log(config);
+
+app.set('port', process.env.PORT || config.nodePort );
 app.set('views', __dirname + '/views');
 app.engine('handlebars', exphbs({
     defaultLayout: 'main',
@@ -35,7 +37,7 @@ if ('development' === app.get('env')) {
 }
 
 //connect to the db server:
-mongoose.connect('mongodb://localhost/boilerplate');
+mongoose.connect('mongodb://localhost/CharacterApp');
 mongoose.connection.on('open', function() {
     console.log('Connected to Mongoose.');
 

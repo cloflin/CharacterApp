@@ -1,4 +1,6 @@
-require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"K6RVRE":[function(require,module,exports){
+require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"backbone.marionette":[function(require,module,exports){
+module.exports=require('SDhAbQ');
+},{}],"SDhAbQ":[function(require,module,exports){
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
 
 ; global.$ = require("jquery");
@@ -2475,11 +2477,9 @@ _.extend(Marionette.Module, {
 
 }).call(global, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
-},{"backbone":"BdMg6I","jquery":"pssFHd","underscore":"YLhgh3"}],"backbone.marionette":[function(require,module,exports){
-module.exports=require('K6RVRE');
-},{}],"backbone":[function(require,module,exports){
-module.exports=require('BdMg6I');
-},{}],"BdMg6I":[function(require,module,exports){
+},{"backbone":"EXaIaz","jquery":"jsUHzF","underscore":"zUcm3n"}],"backbone":[function(require,module,exports){
+module.exports=require('EXaIaz');
+},{}],"EXaIaz":[function(require,module,exports){
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
 
 ; global.underscore = require("underscore");
@@ -4069,7 +4069,7 @@ var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? 
 
 }).call(global, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
-},{"underscore":"YLhgh3"}],"pssFHd":[function(require,module,exports){
+},{"underscore":"zUcm3n"}],"jsUHzF":[function(require,module,exports){
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
 /*!
  * jQuery JavaScript Library v1.10.2
@@ -13866,8 +13866,10 @@ if ( typeof module === "object" && module && typeof module.exports === "object" 
 }).call(global, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
 },{}],"jquery":[function(require,module,exports){
-module.exports=require('pssFHd');
-},{}],"YLhgh3":[function(require,module,exports){
+module.exports=require('jsUHzF');
+},{}],"underscore":[function(require,module,exports){
+module.exports=require('zUcm3n');
+},{}],"zUcm3n":[function(require,module,exports){
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};(function browserifyShim(module, exports, define, browserify_shim__define__module__export__) {
 //     Underscore.js 1.5.2
 //     http://underscorejs.org
@@ -15150,16 +15152,14 @@ var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? 
 
 }).call(global, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
-},{}],"underscore":[function(require,module,exports){
-module.exports=require('YLhgh3');
-},{}]},{},["K6RVRE","BdMg6I","pssFHd","YLhgh3"])
+},{}]},{},["SDhAbQ","EXaIaz","jsUHzF","zUcm3n"])
 ;
 ;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var Marionette = require('backbone.marionette'),
     Controller = require('./controller'),
     Router = require('./router'),
-    ContactModel = require('./models/contact'),
-    ContactsCollection = require('./collections/contacts');
+    CharacterModel = require('./models/character'),
+    CharacterCollection = require('./collections/characters');
 
 module.exports = App = function App() {};
 
@@ -15173,10 +15173,10 @@ App.prototype.start = function(){
         App.data = {};
 
         // load up some initial data:
-        var contacts = new ContactsCollection();
-        contacts.fetch({
+        var characters = new CharactersCollection();
+        characters.fetch({
             success: function() {
-                App.data.contacts = contacts;
+                App.data.characters = characters;
                 App.core.vent.trigger('app:start');
             }
         });
@@ -15202,44 +15202,44 @@ App.prototype.start = function(){
     App.core.start();
 };
 
-},{"./collections/contacts":2,"./controller":3,"./models/contact":5,"./router":6}],2:[function(require,module,exports){
+},{"./collections/characters":2,"./controller":3,"./models/character":5,"./router":6}],2:[function(require,module,exports){
 var Backbone = require('backbone'),
-    ContactModel = require('../models/contact');
+    CharacterModel = require('../models/character');
 
-module.exports = ContactsCollection = Backbone.Collection.extend({
-    model:  ContactModel,
-    url: '/api/contacts'
+module.exports = CharactersCollection = Backbone.Collection.extend({
+    model:  CharacterModel,
+    url: '/api/characters'
 });
 
-},{"../models/contact":5}],3:[function(require,module,exports){
+},{"../models/character":5}],3:[function(require,module,exports){
 var Marionette = require('backbone.marionette'),
-    ContactsView = require('./views/contacts'),
-    ContactDetailsView = require('./views/contact_details'),
-    AddContactView = require('./views/add');
+    CharactersView = require('./views/characters'),
+    CharacterDetailsView = require('./views/character_details'),
+    AddCharacterView = require('./views/add');
 
 module.exports = Controller = Marionette.Controller.extend({
     initialize: function() {
         App.core.vent.trigger('app:log', 'Controller: Initializing');
-        window.App.views.contactsView = new ContactsView({ collection: window.App.data.contacts });
+        window.App.views.charactersView = new CharactersView({ collection: window.App.data.characters });
     },
 
     home: function() {
         App.core.vent.trigger('app:log', 'Controller: "Home" route hit.');
-        var view = window.App.views.contactsView;
+        var view = window.App.views.charactersView;
         this.renderView(view);
         window.App.router.navigate('#');
     },
 
     details: function(id) {
-        App.core.vent.trigger('app:log', 'Controller: "Contact Details" route hit.');
-        var view = new ContactDetailsView({ model: window.App.data.contacts.get(id)});
+        App.core.vent.trigger('app:log', 'Controller: "Character Details" route hit.');
+        var view = new CharacterDetailsView({ model: window.App.data.characters.get(id)});
         this.renderView(view);
         window.App.router.navigate('details/' + id);
     },
 
     add: function() {
-        App.core.vent.trigger('app:log', 'Controller: "Add Contact" route hit.');
-        var view = new AddContactView();
+        App.core.vent.trigger('app:log', 'Controller: "Add Character" route hit.');
+        var view = new AddCharacterView();
         this.renderView(view);
         window.App.router.navigate('add');
     },
@@ -15259,7 +15259,7 @@ module.exports = Controller = Marionette.Controller.extend({
     }
 });
 
-},{"./views/add":7,"./views/contact_details":8,"./views/contacts":9}],4:[function(require,module,exports){
+},{"./views/add":7,"./views/character_details":8,"./views/characters":9}],4:[function(require,module,exports){
 var App = require('./app');
 var myapp = new App();
 myapp.start();
@@ -15267,9 +15267,9 @@ myapp.start();
 },{"./app":1}],5:[function(require,module,exports){
 var Backbone = require('backbone');
 
-module.exports = ContactModel = Backbone.Model.extend({
+module.exports = CharacterModel = Backbone.Model.extend({
     idAttribute: '_id',
-    urlRoot: 'api/contacts'
+    urlRoot: 'api/characters'
 });
 
 },{}],6:[function(require,module,exports){
@@ -15294,17 +15294,36 @@ module.exports = AddView = Marionette.ItemView.extend({
 
     save: function(e) {
         e.preventDefault();
-        var newContact = {
-            name: {
-                first: this.$el.find('#name_first').val(),
-                last: this.$el.find('#name_last').val()
+        var newCharacter = {
+            characterName: this.$el.find('#characterName'),
+            playerName: {
+                first: this.$el.find('#playerName_first').val(),
+                last: this.$el.find('#playerName_last').val()
             },
-            email: this.$el.find('#email').val(),
-            phone: this.$el.find('#phone').val()
+            class: this.$el.find('#class').val(),
+            level: this.$el.find('#level').val(),
+            ecl: this.$el.find('#ecl').val(),
+            race: this.$el.find('#race').val(),
+            template: this.$el.find('#template').val(),
+            size: this.$el.find('#size').val(),
+            gender: this.$el.find('#gender').val(),
+            alignment: this.$el.find('#alignment').val(),
+            patronDeity: this.$el.find('#patronDeity').val(),
+            weight: this.$el.find('#weight').val(),
+            description: this.$el.find('#description').val(),
+            abilityScores: {
+                strength: this.$el.find('#strength').val(),
+                dexterity: this.$el.find('#dexterity').val(),
+                constitution: this.$el.find('#constitution').val(),
+                intelligence: this.$el.find('#intelligence').val(),
+                wisdom: this.$el.find('#wisdom').val(),
+                charisma: this.$el.find('#charisma').val()
+            },
+            hitPoints: this.$el.find('#hitPoints').val(),
         };
 
-        window.App.data.contacts.create(newContact);
-        window.App.core.vent.trigger('app:log', 'Add View: Saved new contact!');
+        window.App.data.characters.create(newCharacter);
+        window.App.core.vent.trigger('app:log', 'Add View: Saved new character!');
         window.App.controller.home();
     }
 });
@@ -15313,10 +15332,10 @@ module.exports = AddView = Marionette.ItemView.extend({
 var Marionette = require('backbone.marionette');
 
 module.exports = ContactDetailsView = Marionette.ItemView.extend({
-    template: require('../../templates/contact_details.hbs'),
+    template: require('../../templates/character_details.hbs'),
     events: {
         'click a.back': 'goBack',
-        'click a.delete': 'deleteContact'
+        'click a.delete': 'deleteCharacter'
     },
 
     goBack: function(e) {
@@ -15326,7 +15345,7 @@ module.exports = ContactDetailsView = Marionette.ItemView.extend({
     deleteContact: function(e) {
         e.preventDefault();
         console.log('Deleting contact');
-        window.App.data.contacts.remove(this.model);
+        window.App.data.characters.remove(this.model);
 
         // this will actually send a DELETE to the server:
         this.model.destroy();
@@ -15335,11 +15354,11 @@ module.exports = ContactDetailsView = Marionette.ItemView.extend({
     }
 });
 
-},{"../../templates/contact_details.hbs":11}],9:[function(require,module,exports){
+},{"../../templates/character_details.hbs":11}],9:[function(require,module,exports){
 var Marionette = require('backbone.marionette');
 
 var itemView = Marionette.ItemView.extend({
-    template: require('../../templates/contact_small.hbs'),
+    template: require('../../templates/character_small.hbs'),
     initialize: function() {
         this.listenTo(this.model, 'change', this.render);
     },
@@ -15348,7 +15367,7 @@ var itemView = Marionette.ItemView.extend({
     },
 
     showDetails: function() {
-        window.App.core.vent.trigger('app:log', 'Contacts View: showDetails hit.');
+        window.App.core.vent.trigger('app:log', 'Characters View: showDetails hit.');
         window.App.controller.details(this.model.id);
     }
 });
@@ -15360,7 +15379,7 @@ module.exports = CollectionView = Marionette.CollectionView.extend({
     itemView: itemView
 });
 
-},{"../../templates/contact_small.hbs":12}],10:[function(require,module,exports){
+},{"../../templates/character_small.hbs":12}],10:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var Handlebars = require('hbsfy/runtime');
 module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -15369,7 +15388,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<div class=\"add_contact\">\n    <label for=\"name_first\">First Name:</label> <input type=\"text\" id=\"name_first\" /><br/>\n    <label for=\"name_last\">Last Name:</label> <input type=\"text\" id=\"name_last\" /><br/>\n    <label for=\"email\">Email:</label> <input type=\"text\" id=\"email\" /><br/>\n    <label for=\"phone\">Phone:</label> <input type=\"text\" id=\"phone\" /><br/>\n    <br/>\n    <a href=\"#\" class=\"save-button\">Save Contact</a> | <a href=\"#\"><< Back</a>\n</div>\n";
+  return "<div class=\"add_character\">\n    <label for=\"characterName\">Character Name:</label> <input type=\"text\" id=\"characterName\" /><br/>\n    <label for=\"playerName_first\">Player First Name:</label> <input type=\"text\" id=\"playerName_first\" />\n    <label for=\"playerName_last\">Player Last Name:</label> <input type=\"text\" id=\"playerName_last\" /><br/>\n    <label for=\"class\">class:</label> <input type=\"text\" id=\"class\" /><br/>\n    <label for=\"level\">level:</label> <input type=\"text\" id=\"level\" /><br/>\n    <label for=\"ecl\">ecl:</label> <input type=\"text\" id=\"ecl\" /><br/>\n    <label for=\"race\">race:</label> <input type=\"text\" id=\"race\" /><br/>\n    <label for=\"template\">template:</label> <input type=\"text\" id=\"template\" /><br/>\n    <label for=\"size\">size:</label> <input type=\"text\" id=\"size\" /><br/>\n    <label for=\"gender\">gender:</label> <input type=\"text\" id=\"gender\" /><br/>\n    <label for=\"alignment\">alignment:</label> <input type=\"text\" id=\"alignment\" /><br/>\n    <label for=\"patronDeity\">patronDeity:</label> <input type=\"text\" id=\"patronDeity\" /><br/>\n    <label for=\"weight\">weight:</label> <input type=\"text\" id=\"weight\" /><br/>\n    <label for=\"description\">description:</label> <input type=\"text\" id=\"description\" /><br/>\n    <label for=\"strength\">strength:</label> <input type=\"text\" id=\"strength\" /><br/>\n    <label for=\"dexterity\">dexterity:</label> <input type=\"text\" id=\"dexterity\" /><br/>\n    <label for=\"constitution\">constitution:</label> <input type=\"text\" id=\"constitution\" /><br/>\n    <label for=\"intelligence\">intelligence:</label> <input type=\"text\" id=\"intelligence\" /><br/>\n    <label for=\"wisdom\">wisdom:</label> <input type=\"text\" id=\"wisdom\" /><br/>\n    <label for=\"charisma\">charisma:</label> <input type=\"text\" id=\"charisma\" /><br/>\n    <label for=\"hitPoints\">hitPoints:</label> <input type=\"text\" id=\"hitPoints\" />\n    <br/>\n    <a href=\"#\" class=\"save-button\">Save Contact</a> | <a href=\"#\"><< Back</a>\n</div>\n";
   });
 
 },{"hbsfy/runtime":16}],11:[function(require,module,exports){
@@ -15381,23 +15400,75 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, stack2, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "<div class=\"contact_full\">\n    <img src=\"http://www.gravatar.com/avatar/";
-  if (stack1 = helpers.gravatar) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
-  else { stack1 = depth0.gravatar; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += "<div class=\"character_full\">\n    <strong>Character Name:</strong> ";
+  if (stack1 = helpers.characterName) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.characterName; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
-    + "?d=monsterid&s=250\"/>\n    <br/><br/>\n    <strong>Name:</strong> "
-    + escapeExpression(((stack1 = ((stack1 = depth0.name),stack1 == null || stack1 === false ? stack1 : stack1.first)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "<br/>\n    <strong>Player Name:</strong> "
+    + escapeExpression(((stack1 = ((stack1 = depth0.playerName),stack1 == null || stack1 === false ? stack1 : stack1.first)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + " "
-    + escapeExpression(((stack1 = ((stack1 = depth0.name),stack1 == null || stack1 === false ? stack1 : stack1.last)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "<br/>\n    <strong>Email:</strong> ";
-  if (stack2 = helpers.email) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
-  else { stack2 = depth0.email; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
+    + escapeExpression(((stack1 = ((stack1 = depth0.playerName),stack1 == null || stack1 === false ? stack1 : stack1.last)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "<br/>\n    <strong>Class:</strong> ";
+  if (stack2 = helpers['class']) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
+  else { stack2 = depth0['class']; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
   buffer += escapeExpression(stack2)
-    + "<br/>\n    <strong>Phone:</strong> ";
-  if (stack2 = helpers.phone) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
-  else { stack2 = depth0.phone; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
+    + " <strong>Level:</strong> ";
+  if (stack2 = helpers.level) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
+  else { stack2 = depth0.level; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
   buffer += escapeExpression(stack2)
-    + "<br/><br/>\n\n</div>\n\n<a href=\"#\" class=\"back\"><< Back</a> | <a href=\"#\" class=\"delete\">Delete Contact</a>\n";
+    + " <strong>ECL:</strong> ";
+  if (stack2 = helpers.ecl) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
+  else { stack2 = depth0.ecl; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
+  buffer += escapeExpression(stack2)
+    + "<br/>\n    <strong>Race:</strong> ";
+  if (stack2 = helpers.race) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
+  else { stack2 = depth0.race; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
+  buffer += escapeExpression(stack2)
+    + " <strong>Template:</strong> ";
+  if (stack2 = helpers.template) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
+  else { stack2 = depth0.template; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
+  buffer += escapeExpression(stack2)
+    + "<br/><br/>\n    <strong>Size:</strong> ";
+  if (stack2 = helpers.size) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
+  else { stack2 = depth0.size; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
+  buffer += escapeExpression(stack2)
+    + " <strong>Gender:</strong> ";
+  if (stack2 = helpers.gender) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
+  else { stack2 = depth0.gender; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
+  buffer += escapeExpression(stack2)
+    + " <strong>Alignment:</strong> ";
+  if (stack2 = helpers.alignment) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
+  else { stack2 = depth0.alignment; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
+  buffer += escapeExpression(stack2)
+    + "<br/>\n    <strong>Religion/Patron Deity:</strong> ";
+  if (stack2 = helpers.patronDeity) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
+  else { stack2 = depth0.patronDeity; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
+  buffer += escapeExpression(stack2)
+    + "<br/>\n    <strong>Weight:</strong> ";
+  if (stack2 = helpers.weight) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
+  else { stack2 = depth0.weight; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
+  buffer += escapeExpression(stack2)
+    + " <strong>Description:</strong> ";
+  if (stack2 = helpers.description) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
+  else { stack2 = depth0.description; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
+  buffer += escapeExpression(stack2)
+    + "<br/>\n    <strong>STR:</strong> "
+    + escapeExpression(((stack1 = ((stack1 = depth0.abilityScores),stack1 == null || stack1 === false ? stack1 : stack1.strength)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\n    <strong>DEX:</strong> "
+    + escapeExpression(((stack1 = ((stack1 = depth0.abilityScores),stack1 == null || stack1 === false ? stack1 : stack1.dexterity)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\n    <strong>CON:</strong> "
+    + escapeExpression(((stack1 = ((stack1 = depth0.abilityScores),stack1 == null || stack1 === false ? stack1 : stack1.constitution)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\n    <strong>INT:</strong> "
+    + escapeExpression(((stack1 = ((stack1 = depth0.abilityScores),stack1 == null || stack1 === false ? stack1 : stack1.intelligence)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\n    <strong>WIS:</strong> "
+    + escapeExpression(((stack1 = ((stack1 = depth0.abilityScores),stack1 == null || stack1 === false ? stack1 : stack1.wisdom)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\n    <strong>CHA:</strong> "
+    + escapeExpression(((stack1 = ((stack1 = depth0.abilityScores),stack1 == null || stack1 === false ? stack1 : stack1.charisma)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "<br/>\n    <strong>HP:</strong> ";
+  if (stack2 = helpers.hitPoints) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
+  else { stack2 = depth0.hitPoints; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
+  buffer += escapeExpression(stack2)
+    + "<br/><br/>\n\n</div>\n\n<a href=\"#\" class=\"back\"><< Back</a> | <a href=\"#\" class=\"delete\">Delete Character</a>\n";
   return buffer;
   });
 
@@ -15407,21 +15478,53 @@ var Handlebars = require('hbsfy/runtime');
 module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  var buffer = "", stack1, stack2, functionType="function", escapeExpression=this.escapeExpression;
+  var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "<div class=\"contact_small\">\n    <img src=\"http://www.gravatar.com/avatar/";
-  if (stack1 = helpers.gravatar) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
-  else { stack1 = depth0.gravatar; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += "<div class=\"contact_small\">\n    <strong>";
+  if (stack1 = helpers.characterName) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.characterName; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
-    + "?d=monsterid&s=45\"/>\n    <strong>"
-    + escapeExpression(((stack1 = ((stack1 = depth0.name),stack1 == null || stack1 === false ? stack1 : stack1.first)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + " "
-    + escapeExpression(((stack1 = ((stack1 = depth0.name),stack1 == null || stack1 === false ? stack1 : stack1.last)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</strong><br/>\n    ";
-  if (stack2 = helpers.email) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
-  else { stack2 = depth0.email; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
-  buffer += escapeExpression(stack2)
+    + "</strong><br />\n    <strong>";
+  if (stack1 = helpers.race) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.race; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + " ";
+  if (stack1 = helpers['class']) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0['class']; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + " ";
+  if (stack1 = helpers.level) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.level; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "</strong><br />\n    ";
+  if (stack1 = helpers.alignment) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.alignment; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + " ";
+  if (stack1 = helpers.size) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.size; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + " ";
+  if (stack1 = helpers.gender) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.gender; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + " ";
+  if (stack1 = helpers.hitPoints) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.hitPoints; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "hp<br/>\n    S:"
+    + escapeExpression(((stack1 = ((stack1 = depth0.abilityScores),stack1 == null || stack1 === false ? stack1 : stack1.strength)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\n    D:"
+    + escapeExpression(((stack1 = ((stack1 = depth0.abilityScores),stack1 == null || stack1 === false ? stack1 : stack1.dexterity)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\n    C:"
+    + escapeExpression(((stack1 = ((stack1 = depth0.abilityScores),stack1 == null || stack1 === false ? stack1 : stack1.constitution)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\n    I:"
+    + escapeExpression(((stack1 = ((stack1 = depth0.abilityScores),stack1 == null || stack1 === false ? stack1 : stack1.intelligence)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\n    W:"
+    + escapeExpression(((stack1 = ((stack1 = depth0.abilityScores),stack1 == null || stack1 === false ? stack1 : stack1.wisdom)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\n    CH:"
+    + escapeExpression(((stack1 = ((stack1 = depth0.abilityScores),stack1 == null || stack1 === false ? stack1 : stack1.charisma)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\n</div>\n";
   return buffer;
   });

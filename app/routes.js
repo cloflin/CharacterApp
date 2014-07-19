@@ -1,12 +1,12 @@
 var home = require('../controllers/home'),
-    contacts = require('../controllers/contacts');
+    characters = require('../controllers/characters');
 
 module.exports.initialize = function(app, router) {
     router.get('/', home.index);
-    router.get('/api/contacts', contacts.index);
-    router.get('/api/contacts/:id', contacts.getById);
-    router.post('/api/contacts', contacts.add);
-    router.delete('/api/contacts/:id', contacts.delete);
+    router.get('/api/characters', characters.index);
+    router.get('/api/characters/:id', characters.getById);
+    router.post('/api/characters', characters.add);
+    router.delete('/api/characters/:id', characters.delete);
 
     app.use('/', router);
 };
