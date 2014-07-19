@@ -2,14 +2,9 @@
 
 Backbone.js, ExpressJS & node.js, MongoDB
 
-This is a fork of Jason Krull's excellent project (
+This is a fork of Jason Krull's excellent project (git@github.com:jkat98/benm.git). For more information, please see his blog post here: http://kroltech.com/2013/12/boilerplate-web-app-using-backbone-js-expressjs-node-js-mongodb/
 
-[![Build Status](https://travis-ci.org/jkat98/benm.svg?branch=master)](https://travis-ci.org/jkat98/benm) [![Gitter chat](https://badges.gitter.im/jkat98/benm.png)](https://gitter.im/jkat98/benm)
-
-This boilerplate app features a complete backend using node.js with ExpressJS, a data layer using MongoDB with Mongoose, and a complete front-end application built using Backbone.js (with Marionette and Browserify).  The front-end application is a simple Contacts manager.  All of the code is fairly basic yet functional.
-
-A detailed blog post covering this entire application can be found here:
-http://kroltech.com/2013/12/boilerplate-web-app-using-backbone-js-expressjs-node-js-mongodb/
+This boilerplate app features a complete backend using node.js with ExpressJS, a data layer using MongoDB with Mongoose, and a complete front-end application built using Backbone.js (with Marionette and Browserify). All of the code is fairly basic yet functional.
 
  * Backbone.js
   * Handlebars
@@ -29,7 +24,7 @@ http://kroltech.com/2013/12/boilerplate-web-app-using-backbone-js-expressjs-node
   * Browserify
   * Handlebars (precompiled)
   * jsHinting
-  * LESS
+  * Stylus
   * Minification/Uglification
   * Karma client testing/tdd
   * Mocha node testing
